@@ -29,11 +29,14 @@ jobs:
       - name: Build EXE
         run: pyinstaller --onefile "babe guess game.py"
 
-      - name: List dist directory (Check file name)
+      - name: List root directory (Check for EXE file)
+        run: dir
+
+      - name: List dist directory (Check for EXE file)
         run: dir dist
 
       - name: Upload EXE to Artifacts
         uses: actions/upload-artifact@v3
         with:
           name: babe_guess_game.exe
-          path: dist/babe\ guess\ game.exe
+          path: dist/*.exe
